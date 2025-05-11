@@ -20,6 +20,25 @@
         .product-title {
             font-family: 'Inter', sans-serif; /* Product title font */
         }
+        .password-wrapper {
+            position: relative; /* Make sure the wrapper is a positioning context */
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px; /* Adjust as necessary to position the button */
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            padding: 0.25rem; /* Add some padding for better touch area */
+            display: flex; /* Use flexbox for centering the icon */
+            align-items: center;
+        }
+
+        .password-toggle-icon {
+            width: 1rem; /* Or any size you prefer for the icon */
+            height: 1rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -85,9 +104,13 @@
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 password-wrapper">
                     <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
                     <input type="password" id="password" name="password" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
+                    <span id="password-toggle" class="password-toggle" aria-label="Show/Hide Password">
+                        <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye password-toggle-icon" style="display: none;"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg id="eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-off password-toggle-icon"><path d="M10.79 12.91A3 3 0 0 1 9 12c-5 0-8 7-8 7s9 5 15 5a18.29 18.29 0 0 0 3.07-1.23"/><path d="M18.36 18.36a12.58 12.58 0 0 1-8.62-3.07"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><path d="M18 18a2 2 0 1 0-4 0"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+                    </span>
                     <p id="password-requirements" class="text-gray-500 text-xs italic">Password must be at least 8 characters long and contain at least one capital letter and one number.</p>
                 </div>
                 <div class="mb-4">
@@ -168,6 +191,9 @@
         const signupFormElement = document.getElementById("signup-form");
         const homeSection = document.getElementById("home-section");
         const passwordRequirements = document.getElementById("password-requirements");
+        const passwordToggle = document.getElementById("password-toggle");
+        const eyeIcon = document.getElementById("eye-icon");
+        const eyeOffIcon = document.getElementById("eye-off-icon");
 
 
         function toggleMobileMenu() {
@@ -228,6 +254,20 @@
         mobileSignUpLink.addEventListener("click", (event) => {
             event.preventDefault();
             signUpForm.classList.toggle("hidden");
+        });
+
+        passwordToggle.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Toggle visibility of the eye icons
+            if (type === 'password') {
+                eyeIcon.style.display = 'none';
+                eyeOffIcon.style.display = 'block';
+            } else {
+                eyeIcon.style.display = 'block';
+                eyeOffIcon.style.display = 'none';
+            }
         });
 
 
