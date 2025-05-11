@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOUX </title>
+    <title>Loux - Your Clothing Brand</title>
     <meta name="description" content="High-quality clothing for everyone. Explore our latest collections.">
     <meta name="keywords" content="clothing, fashion, apparel, style, shop, online store">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Outfit', sans-serif; /* Default font */
         }
+        .logo {
+            height: 50px; /* Adjust as needed */
+        }
+        .dark-mode {
+            background-color: #1a202c; /* Dark background */
+            color: #f7fafc; /* Light text */
+        }
+        .dark-mode .bg-white {
+            background-color: #2d3748; /* Darker container background */
+        }
+        .dark-mode .text-gray-700 {
+            color: #cbd5e0; /* Lighter gray text */
+        }
+        .dark-mode .text-blue-600 {
+            color: #90caf9; /* Lighter blue for links */
+        }
+        .dark-mode .bg-blue-100{
+             background-color: #4a5568;
+        }
+        .product-title {
+            font-family: 'Inter', sans-serif; /* Product title font */
+            color: #ffffff; /* White color for product titles */
+        }
+        .product-description {
+            color: #e2e8f0;
+        }
+
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 dark-mode">
     <header class="bg-white shadow-md py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="/" class="text-xl font-semibold text-gray-800">Loux</a>
+            <a href="/" class="">
+                <img src="images/loux-logo.png" alt="Loux Logo" class="logo">
+            </a>
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
                     <li><a href="/" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a></li>
                     <li><a href="/collections" class="text-gray-700 hover:text-blue-600 transition duration-300">Collections</a></li>
-                    <li><a href="/about" class="text-gray-700 hover:text-blue-600 transition duration-300">Sign Up</a></li>
+                    <li><a href="#" id="header-sign-up-link" class="text-gray-700 hover:text-blue-600 transition duration-300">Sign Up</a></li>
                     <li><a href="/contact" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
                     <li><a href="/shop" class="text-gray-700 hover:text-blue-600 transition duration-300">Shop</a></li>
                 </ul>
@@ -50,9 +79,9 @@
                 <ul class="space-y-4">
                     <li><a href="/" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Home</a></li>
                     <li><a href="/collections" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Collections</a></li>
-                    <li><a href="/about" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">About Us</a></li>
+                    <li><a href="#" id="mobile-sign-up-link" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Sign Up</a></li>
                     <li><a href="/contact" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
-                     <li><a href="/shop" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Shop</a></li>
+                    <li><a href="/shop" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Shop</a></li>
                 </ul>
             </nav>
         </div>
@@ -60,33 +89,49 @@
 
     <main class="container mx-auto px-4 py-8">
         <section class="text-center mb-12">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4">COMING SOON</h2>
-            <p class="text-gray-600 text-lg mb-6">a beginning, not a launch.</p>
-            <a href="/collections" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Shop Now</a>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4">Discover Your Style</h2>
+            <p class="text-gray-600 text-lg mb-6">Explore our latest collections of high-quality clothing.</p>
+            <button id="sign-up-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Sign Up</button>
         </section>
+
+        <div id="sign-up-form" class="hidden bg-white rounded-lg shadow-md p-8 max-w-md mx-auto mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Sign Up</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <input type="password" id="password" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 focus:outline-none focus:shadow-outline">Sign Up</button>
+            </form>
+            <p id="sign-up-message" class="mt-4 text-gray-600"></p>
+        </div>
 
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <article class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://source.unsplash.com/featured/?clothing,fashion" alt="Clothing Item 1" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">tshirt 1</h3>
-                    <p class="text-gray-600 mb-4">Description of clothing item 1.</p>
+                    <h3 class="text-xl font-semibold product-title mb-2">tshirt 1</h3>
+                    <p class="text-gray-600 product-description mb-4">Description of clothing item 1.</p>
                     <a href="/product1" class="text-blue-600 hover:text-blue-800 transition duration-300">View Details</a>
                 </div>
             </article>
             <article class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://source.unsplash.com/featured/?apparel,style" alt="Clothing Item 2" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Product 2</h3>
-                    <p class="text-gray-600 mb-4">Description of clothing item 2.</p>
+                    <h3 class="text-xl font-semibold product-title mb-2">Product 2</h3>
+                    <p class="text-gray-600 product-description mb-4">Description of clothing item 2.</p>
                     <a href="/product2" class="text-blue-600 hover:text-blue-800 transition duration-300">View Details</a>
                 </div>
             </article>
             <article class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://source.unsplash.com/featured/?fashion,shopping" alt="Clothing Item 3" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Product 3</h3>
-                    <p class="text-gray-600 mb-4">Description of clothing item 3.</p>
+                    <h3 class="text-xl font-semibold product-title mb-2">Product 3</h3>
+                    <p class="text-gray-600 product-description mb-4">Description of clothing item 3.</p>
                     <a href="/product3" class="text-blue-600 hover:text-blue-800 transition duration-300">View Details</a>
                 </div>
             </article>
@@ -117,6 +162,14 @@
         const mobileMenuLinks = mobileMenu.querySelectorAll("a");
         const navLinks = document.querySelectorAll('header nav a');
         const sections = document.querySelectorAll('main > section');
+        const signUpBtn = document.getElementById("sign-up-btn");
+        const signUpForm = document.getElementById("sign-up-form");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const signUpMessage = document.getElementById("sign-up-message");
+        const headerSignUpLink = document.getElementById("header-sign-up-link");
+        const mobileSignUpLink = document.getElementById("mobile-sign-up-link");
+
 
         function toggleMobileMenu() {
             mobileMenu.classList.toggle("hidden");
@@ -162,6 +215,38 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        signUpBtn.addEventListener("click", () => {
+            signUpForm.classList.toggle("hidden");
+        });
+
+        headerSignUpLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            signUpForm.classList.toggle("hidden");
+        });
+
+        mobileSignUpLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            signUpForm.classList.toggle("hidden");
+        });
+
+
+        signUpForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const emailValue = emailInput.value.trim();
+            const passwordValue = passwordInput.value.trim();
+
+            if (emailValue === "" || passwordValue === "") {
+                signUpMessage.textContent = "Please enter both email and password.";
+                signUpMessage.style.color = "red";
+            } else {
+                signUpMessage.textContent = `Thank you for signing up with email: ${emailValue}!`;
+                signUpMessage.style.color = "green";
+                 emailInput.value = "";
+                  passwordInput.value = "";
+            }
         });
     </script>
 </body>
