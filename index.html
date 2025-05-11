@@ -26,7 +26,7 @@
     <header class="bg-white shadow-md py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="/" class="">
-                <img src="images/loux-logo.png" alt="Loux Logo" class="logo">
+                <img src="logoremovebg.png" alt="Loux Logo" class="logo">
             </a>
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
@@ -79,30 +79,31 @@
                 <input type="hidden" name="_subject" value="New Sign Up!">
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your name">
+                    <input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your name">
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
+                    <input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                    <input type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
+                    <input type="password" id="password" name="password" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
+                    <p id="password-requirements" class="text-gray-500 text-xs italic">Password must be at least 8 characters long and contain at least one capital letter and one number.</p>
                 </div>
                 <div class="mb-4">
                     <label for="confirm-password" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Confirm your password">
+                    <input type="password" id="confirm-password" name="confirm-password" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Confirm your password">
                 </div>
                 <div class="mb-4">
                     <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your phone number">
+                    <input type="tel" id="phone" name="phone" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your phone number">
                 </div>
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 focus:outline-none focus:shadow-outline text-white" style="color: white;">Sign Up</button>
             </form>
             <p id="sign-up-message" class="mt-4 text-gray-600"></p>
         </div>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <section id="home-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <article class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://source.unsplash.com/featured/?clothing,fashion" alt="Clothing Item 1" class="w-full h-64 object-cover">
                 <div class="p-4">
@@ -165,6 +166,8 @@
         const confirmPasswordInput = document.getElementById("confirm-password");
         const phoneInput = document.getElementById("phone");
         const signupFormElement = document.getElementById("signup-form");
+        const homeSection = document.getElementById("home-section");
+        const passwordRequirements = document.getElementById("password-requirements");
 
 
         function toggleMobileMenu() {
@@ -237,23 +240,44 @@
             const confirmPasswordValue = confirmPasswordInput.value.trim();
             const phoneNumberValue = phoneInput.value.trim();
 
+            let hasErrors = false;
+
 
             if (nameValue === "" || emailValue === "" || passwordValue === "" || confirmPasswordValue === "" || phoneNumberValue === "") {
                 signUpMessage.textContent = "Please fill in all fields.";
                 signUpMessage.style.color = "red";
+                hasErrors = true;
             } else if (passwordValue !== confirmPasswordValue) {
                 signUpMessage.textContent = "Passwords do not match.";
                 signUpMessage.style.color = "red";
-            } else {
-                //  The form data will be sent to your email using Formspree
-                signUpMessage.textContent = `Thank you for signing up, ${nameValue}!`;
-                signUpMessage.style.color = "green";
-                 nameInput.value = "";
-                 emailInput.value = "";
-                  passwordInput.value = "";
-                  confirmPasswordInput.value = "";
-                  phoneInput.value = "";
+                hasErrors = true;
+            } else if (passwordValue.length < 8 || !/[A-Z]/.test(passwordValue) || !/\d/.test(passwordValue)) {
+                signUpMessage.textContent = "Password does not meet requirements.";
+                signUpMessage.style.color = "red";
+                hasErrors = true;
+            }  else if (isNaN(phoneNumberValue)) {
+                signUpMessage.textContent = "Phone number must contain only numbers.";
+                signUpMessage.style.color = "red";
+                hasErrors = true;
             }
+
+            if (hasErrors) {
+                return; // Stop form submission if there are errors
+            }
+
+            //  The form data will be sent to your email using Formspree
+            signUpMessage.textContent = `Thank you for signing up, ${nameValue}!`;
+            signUpMessage.style.color = "green";
+             nameInput.value = "";
+             emailInput.value = "";
+              passwordInput.value = "";
+              confirmPasswordInput.value = "";
+              phoneInput.value = "";
+
+            // Hide the form and show the home section
+            signUpForm.classList.add("hidden");
+            homeSection.insertAdjacentHTML('beforebegin', `<p class="text-center text-green-600 text-lg mb-4">Thank you for signing up, ${nameValue}! </p>`);
+
         });
     </script>
 </body>
