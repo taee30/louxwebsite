@@ -12,106 +12,60 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
+            font-family: 'Outfit', sans-serif; /* Default font */
         }
         .logo {
-            height: 50px;
+            height: 50px; /* Adjust as needed */
         }
         .product-title {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif; /* Product title font */
         }
         .password-wrapper {
-            position: relative;
+            position: relative; /* Make sure the wrapper is a positioning context */
         }
+
         .password-toggle {
             position: absolute;
-            right: 10px;
+            right: 10px; /* Adjust as necessary to position the button */
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            padding: 0.25rem;
-            display: flex;
+            padding: 0.25rem; /* Add some padding for better touch area */
+            display: flex; /* Use flexbox for centering the icon */
             align-items: center;
         }
+
         .password-toggle-icon {
-            width: 1rem;
+            width: 1rem; /* Or any size you prefer for the icon */
             height: 1rem;
         }
         #countdown {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            color: #fff;
+            color: #4a5568; /* You can change this color */
             letter-spacing: 2px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             padding: 10px;
-            border: 2px solid #fff;
-            background-color: #000;
-        }
-        .form-container {
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .form-container h2 {
-            color: #fff;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        .form-container label {
-            color: #ddd;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .form-container input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #444;
-            border-radius: 0.375rem;
-            background-color: #222;
-            color: #fff;
-            margin-bottom: 1rem;
-            outline: none;
-        }
-        .form-container button {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .form-container button:hover {
-            background-color: #45a049;
-        }
-        .form-container .error-message {
-            color: #FF6B6B;
-            margin-top: 0.5rem;
+            border: 2px solid black;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-gray-800 shadow-md py-4">
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="/" class="">
                 <img src="logoremovebg.png" alt="Loux Logo" class="logo">
             </a>
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
-                    <li><a href="/" class="text-gray-300 hover:text-blue-400 transition duration-300">Home</a></li>
-                    <li><a href="/collections" class="text-gray-300 hover:text-blue-400 transition duration-300">Collections</a></li>
-                    <li><a href="#" id="header-sign-up-link" class="text-gray-300 hover:text-blue-400 transition duration-300">Sign Up</a></li>
-                    <li><a href="/contact" class="text-gray-300 hover:text-blue-400 transition duration-300">Contact</a></li>
-                    <li><a href="#" id="header-sign-in-link" class="text-gray-300 hover:text-blue-400 transition duration-300">My Page</a></li>
+                    <li><a href="/" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a></li>
+                    <li><a href="/collections" class="text-gray-700 hover:text-blue-600 transition duration-300">Collections</a></li>
+                    <li><a href="#" id="header-sign-up-link" class="text-gray-700 hover:text-blue-600 transition duration-300">Sign Up</a></li>
+                    <li><a href="/contact" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
+                    <li><a href="#" id="header-sign-in-link" class="text-gray-700 hover:text-blue-600 transition duration-300">Sign In</a></li>
                 </ul>
             </nav>
-            <button id="hamburger-btn" class="md:hidden text-gray-300 focus:outline-none" aria-label="Toggle Navigation">
+            <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
@@ -120,9 +74,9 @@
     </header>
 
     <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
-        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
+        <div class="bg-white w-80 h-full absolute right-0 p-6">
             <div class="flex justify-end mb-4">
-                <button id="close-menu-btn" class="text-gray-300 focus:outline-none" aria-label="Close Menu">
+                <button id="close-menu-btn" class="text-gray-700 focus:outline-none" aria-label="Close Menu">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -130,11 +84,11 @@
             </div>
             <nav class="block">
                 <ul class="space-y-4">
-                    <li><a href="/" class="block text-lg text-gray-300 hover:text-blue-400 transition duration-300">Home</a></li>
-                    <li><a href="/collections" class="block text-lg text-gray-300 hover:text-blue-400 transition duration-300">Collections</a></li>
-                    <li><a href="#" id="mobile-sign-up-link" class="block text-lg text-gray-300 hover:text-blue-400 transition duration-300">Sign Up</a></li>
-                    <li><a href="/contact" class="block text-lg text-gray-300 hover:text-blue-400 transition duration-300">Contact</a></li>
-                    <li><a href="#" id="mobile-sign-in-link" class="block text-lg text-gray-300 hover:text-blue-400 transition duration-300">My Page</a></li>
+                    <li><a href="/" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Home</a></li>
+                    <li><a href="/collections" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Collections</a></li>
+                    <li><a href="#" id="mobile-sign-up-link" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Sign Up</a></li>
+                    <li><a href="/contact" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
+                    <li><a href="#" id="mobile-sign-in-link" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Sign In</a></li>
                 </ul>
             </nav>
         </div>
@@ -142,26 +96,26 @@
 
     <main class="container mx-auto px-4 py-8">
         <section class="text-center mb-12">
-            <h2 class="text-3xl font-semibold text-gray-200 mb-4">COMING SOON</h2>
-            <p class="text-gray-400 text-lg mb-6">a beginning, not a launch</p>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-4">COMING SOON</h2>
+            <p class="text-gray-600 text-lg mb-6">a beginning, not a launch</p>
             <div id="countdown" class="text-2xl mb-8"></div>
             <button id="sign-up-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Sign Up</button>
         </section>
 
-        <div id="sign-up-form" class="hidden form-container">
-            <h2 class="text-2xl font-semibold text-white mb-6">Sign Up</h2>
+        <div id="sign-up-form" class="hidden bg-white rounded-lg shadow-md p-8 max-w-md mx-auto mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Sign Up</h2>
             <form id="signup-form" method="POST" action="https://formspree.io/f/xzzraebl">
                 <input type="hidden" name="_subject" value="New Sign Up!">
                 <div class="mb-4">
-                    <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Name</label>
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
                     <input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your name">
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email</label>
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
                 </div>
                 <div class="mb-4 password-wrapper">
-                    <label for="password" class="block text-gray-300 text-sm font-bold mb-2">Password</label>
+                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
                     <input type="password" id="password" name="password" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
                     <span id="password-toggle" class="password-toggle" aria-label="Show/Hide Password">
                         <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye password-toggle-icon" style="display: none;"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -170,68 +124,48 @@
                     <p id="password-requirements" class="text-gray-500 text-xs italic">Password must be at least 8 characters long and contain at least one capital letter and one number.</p>
                 </div>
                 <div class="mb-4">
-                    <label for="confirm-password" class="block text-gray-300 text-sm font-bold mb-2">Confirm Password</label>
+                    <label for="confirm-password" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
                     <input type="password" id="confirm-password" name="confirm-password" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Confirm your password">
                 </div>
                 <div class="mb-4">
-                    <label for="phone" class="block text-gray-300 text-sm font-bold mb-2">Phone Number</label>
+                    <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
                     <input type="tel" id="phone" name="phone" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your phone number">
                 </div>
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 focus:outline-none focus:shadow-outline text-white" style="color: white;">Sign Up</button>
             </form>
-            <p id="sign-up-message" class="mt-4 text-gray-400"></p>
-        </div>
-
-        <div id="login-form" class="hidden form-container">
-            <h2 class="text-2xl font-semibold text-white mb-6">Login</h2>
-            <form id="login-form" method="POST" action="#">
-                <div class="mb-4">
-                    <label for="login-email" class="block text-gray-300 text-sm font-bold mb-2">Email</label>
-                    <input type="email" id="login-email" name="login-email" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
-                </div>
-                <div class="mb-4 password-wrapper">
-                    <label for="login-password" class="block text-gray-300 text-sm font-bold mb-2">Password</label>
-                    <input type="password" id="login-password" name="login-password" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
-                    <span id="login-password-toggle" class="password-toggle" aria-label="Show/Hide Password">
-                        <svg id="login-eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye password-toggle-icon" style="display: none;"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                        <svg id="login-eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-off password-toggle-icon"><path d="M10.79 12.91A3 3 0 0 1 9 12c-5 0-8 7-8 7s9 5 15 5a18.29 18.29 0 0 0 3.07-1.23"/><path d="M18.36 18.36a12.58 12.58 0 0 1-8.62-3.07"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><path d="M18 18a2 2 0 1 0-4 0"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
-                    </span>
-                </div>
-                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 focus:outline-none focus:shadow-outline text-white">Log In</button>
-            </form>
-            <p id="login-message" class="mt-4 text-gray-400"></p>
+            <p id="sign-up-message" class="mt-4 text-gray-600"></p>
         </div>
 
         <section id="home-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <article class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <article class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://source.unsplash.com/featured/?clothing,fashion" alt="Clothing Item 1" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold product-title mb-2 text-white">tshirt 1</h3>
-                    <p class="text-gray-400 product-description mb-4">Description of clothing item 1.</p>
-                    <a href="/product1" class="text-blue-400 hover:text-blue-300 transition duration-300">View Details</a>
+                    <h3 class="text-xl font-semibold product-title mb-2">tshirt 1</h3>
+                    <p class="text-gray-600 product-description mb-4">Description of clothing item 1.</p>
+                    <a href="/product1" class="text-blue-600 hover:text-blue-800 transition duration-300">View Details</a>
                 </div>
             </article>
-            <article class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <article class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://source.unsplash.com/featured/?apparel,style" alt="Clothing Item 2" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold product-title mb-2 text-white">Product 2</h3>
-                    <p class="text-gray-400 product-description mb-4">Description of clothing item 2.</p>
-                    <a href="/product2" class="text-blue-400 hover:text-blue-300 transition duration-300">View Details</a>
+                    <h3 class="text-xl font-semibold product-title mb-2">Product 2</h3>
+                    <p class="text-gray-600 product-description mb-4">Description of clothing item 2.</p>
+                    <a href="/product2" class="text-blue-600 hover:text-blue-800 transition duration-300">View Details</a>
                 </div>
             </article>
-            <article class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <article class="bg-white rounded-lg shadow-md overflow-hidden">
                 <img src="https://source.unsplash.com/featured/?fashion,shopping" alt="Clothing Item 3" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold product-title mb-2 text-white">Product 3</h3>
-                    <p class="text-gray-400 product-description mb-4">Description of clothing item 3.</p>
-                    <a href="/product3" class="text-blue-400 hover:text-blue-300 transition duration-300">View Details</a>
+                    <h3 class="text-xl font-semibold product-title mb-2">Product 3</h3>
+                    <p class="text-gray-600 product-description mb-4">Description of clothing item 3.</p>
+                    <a href="/product3" class="text-blue-600 hover:text-blue-800 transition duration-300">View Details</a>
                 </div>
             </article>
         </section>
 
-        <section class="bg-gray-800 rounded-lg py-10 px-6 text-center">
-            <h2 class="text-2xl font-semibold text-white mb-4">About us</h2>
-            <p class="text-gray-400 text-lg mb-6">LOUX CLOTHING. 0511</p>
+        <section class="bg-blue-100 rounded-lg py-10 px-6 text-center">
+            <h2 class="text-2xl font-semibold text-blue-800 mb-4">About us</h2>
+            <p class="text-gray-600 text-lg mb-6">LOUX CLOTHING. 0511</p>
             <a href="/about" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Learn More</a>
         </section>
     </main>
@@ -240,9 +174,9 @@
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Loux. All rights reserved.</p>
             <p class="mt-2">
-                <a href="/privacy" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                <a href="/privacy" class="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a>
                 <span class="mx-2">|</span>
-                <a href="/terms" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                <a href="/terms" class="text-gray-300 hover:text-white transition duration-300">Terms of Service</a>
             </p>
         </div>
     </footer>
@@ -273,13 +207,6 @@
         const countdownDisplay = document.getElementById("countdown");
         const headerSignInLink = document.getElementById("header-sign-in-link");
         const mobileSignInLink = document.getElementById("mobile-sign-in-link");
-        const loginForm = document.getElementById("login-form");
-        const loginEmailInput = document.getElementById("login-email");
-        const loginPasswordInput = document.getElementById("login-password");
-        const loginMessage = document.getElementById("login-message");
-        const loginPasswordToggle = document.getElementById("login-password-toggle");
-        const loginEyeIcon = document.getElementById("login-eye-icon");
-        const loginEyeOffIcon = document.getElementById("login-eye-off-icon");
 
 
         function toggleMobileMenu() {
@@ -330,14 +257,104 @@
 
         signUpBtn.addEventListener("click", () => {
             signUpForm.classList.toggle("hidden");
-            loginForm.classList.add("hidden");
         });
 
         headerSignUpLink.addEventListener("click", (event) => {
             event.preventDefault();
             signUpForm.classList.toggle("hidden");
-            loginForm.classList.add("hidden");
         });
 
         mobileSignUpLink.addEventListener("click", (event) => {
-            ev
+            event.preventDefault();
+            signUpForm.classList.toggle("hidden");
+        });
+
+        passwordToggle.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Toggle visibility of the eye icons
+            if (type === 'password') {
+                eyeIcon.style.display = 'none';
+                eyeOffIcon.style.display = 'block';
+            } else {
+                eyeIcon.style.display = 'block';
+                eyeOffIcon.style.display = 'none';
+            }
+        });
+
+
+        signupFormElement.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const nameValue = nameInput.value.trim();
+            const emailValue = emailInput.value.trim();
+            const passwordValue = passwordInput.value.trim();
+            const confirmPasswordValue = confirmPasswordInput.value.trim();
+            const phoneNumberValue = phoneInput.value.trim();
+
+            let hasErrors = false;
+
+
+            if (nameValue === "" || emailValue === "" || passwordValue === "" || confirmPasswordValue === "" || phoneNumberValue === "") {
+                signUpMessage.textContent = "Please fill in all fields.";
+                signUpMessage.style.color = "red";
+                hasErrors = true;
+            } else if (passwordValue !== confirmPasswordValue) {
+                signUpMessage.textContent = "Passwords do not match.";
+                signUpMessage.style.color = "red";
+                hasErrors = true;
+            } else if (passwordValue.length < 8 || !/[A-Z]/.test(passwordValue) || !/\d/.test(passwordValue)) {
+                signUpMessage.textContent = "Password does not meet requirements.";
+                signUpMessage.style.color = "red";
+                hasErrors = true;
+            }  else if (isNaN(phoneNumberValue)) {
+                signUpMessage.textContent = "Phone number must contain only numbers.";
+                signUpMessage.style.color = "red";
+                hasErrors = true;
+            }
+
+            if (hasErrors) {
+                return; // Stop form submission if there are errors
+            }
+
+            //  The form data will be sent to your email using Formspree
+            signUpMessage.textContent = `Thank you for signing up, ${nameValue}!`;
+            signUpMessage.style.color = "green";
+             nameInput.value = "";
+             emailInput.value = "";
+              passwordInput.value = "";
+              confirmPasswordInput.value = "";
+              phoneInput.value = "";
+
+            // Hide the form and show the home section
+            signUpForm.classList.add("hidden");
+            homeSection.insertAdjacentHTML('beforebegin', `<p class="text-center text-green-600 text-lg mb-4">Thank you for signing up, ${nameValue}! </p>`);
+
+        });
+
+        function updateCountdown() {
+            const launchDate = new Date("2025-06-28T00:00:00");
+            const now = new Date();
+            const diff = launchDate.getTime() - now.getTime();
+
+            if (diff <= 0) {
+                countdownDisplay.textContent = "Launched!";
+            } else {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                countdownDisplay.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        headerSignInLink.textContent = "Sign In";
+        mobileSignInLink.textContent = "Sign In";
+    </script>
+</body>
+</html>
