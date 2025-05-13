@@ -39,6 +39,15 @@
             width: 1rem; /* Or any size you prefer for the icon */
             height: 1rem;
         }
+        #countdown {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #4a5568; /* You can change this color */
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            padding: 10px;
+            border: 2px solid black;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -53,7 +62,7 @@
                     <li><a href="/collections" class="text-gray-700 hover:text-blue-600 transition duration-300">Collections</a></li>
                     <li><a href="#" id="header-sign-up-link" class="text-gray-700 hover:text-blue-600 transition duration-300">Sign Up</a></li>
                     <li><a href="/contact" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
-                    <li><a href="/shop" class="text-gray-700 hover:text-blue-600 transition duration-300">Shop</a></li>
+                    <li><a href="#" id="header-sign-in-link" class="text-gray-700 hover:text-blue-600 transition duration-300">Sign In</a></li>
                 </ul>
             </nav>
             <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Navigation">
@@ -79,7 +88,7 @@
                     <li><a href="/collections" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Collections</a></li>
                     <li><a href="#" id="mobile-sign-up-link" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Sign Up</a></li>
                     <li><a href="/contact" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
-                    <li><a href="/shop" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Shop</a></li>
+                    <li><a href="#" id="mobile-sign-in-link" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">Sign In</a></li>
                 </ul>
             </nav>
         </div>
@@ -89,6 +98,7 @@
         <section class="text-center mb-12">
             <h2 class="text-3xl font-semibold text-gray-800 mb-4">COMING SOON</h2>
             <p class="text-gray-600 text-lg mb-6">a beginning, not a launch</p>
+            <div id="countdown" class="text-2xl mb-8"></div>
             <button id="sign-up-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300">Sign Up</button>
         </section>
 
@@ -194,6 +204,9 @@
         const passwordToggle = document.getElementById("password-toggle");
         const eyeIcon = document.getElementById("eye-icon");
         const eyeOffIcon = document.getElementById("eye-off-icon");
+        const countdownDisplay = document.getElementById("countdown");
+        const headerSignInLink = document.getElementById("header-sign-in-link");
+        const mobileSignInLink = document.getElementById("mobile-sign-in-link");
 
 
         function toggleMobileMenu() {
@@ -319,6 +332,29 @@
             homeSection.insertAdjacentHTML('beforebegin', `<p class="text-center text-green-600 text-lg mb-4">Thank you for signing up, ${nameValue}! </p>`);
 
         });
+
+        function updateCountdown() {
+            const launchDate = new Date("2025-06-28T00:00:00");
+            const now = new Date();
+            const diff = launchDate.getTime() - now.getTime();
+
+            if (diff <= 0) {
+                countdownDisplay.textContent = "Launched!";
+            } else {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                countdownDisplay.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        headerSignInLink.textContent = "Sign In";
+        mobileSignInLink.textContent = "Sign In";
     </script>
 </body>
 </html>
